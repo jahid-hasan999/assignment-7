@@ -10,7 +10,7 @@ const Header = () => {
   });
   return (
     <div className="bg-white">
-      <div className=" flex justify-between container mx-auto mt-2">
+      <div className=" flex justify-between container mx-auto my-2">
         <div className="flex gap-1.5">
           <Image
             className="bg-green-800 font-bold rounded-2xl"
