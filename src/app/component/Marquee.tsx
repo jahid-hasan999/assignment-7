@@ -1,3 +1,4 @@
+import Link from 'next/link';
 const unitMap: Record<string, string> = {
   kg: 'কেজি',
   litre: 'লিটার',
@@ -43,25 +44,27 @@ const Marquee = async () => {
                   key={item.id}
                   className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium whitespace-nowrap pr-6 border-r border-gray-200/60"
                 >
-                  <span className="text-sm sm:text-base">{item.image}</span>
-                  <span className="text-gray-800">{item.nameBn}</span>
-                  <span className="text-gray-700">
-                    ৳{item.today} টাকা/
-                    {unitMap[item.unit?.toLowerCase()] || item.unit}
-                  </span>
-                  <span
-                    className={`flex items-center text-[10px] sm:text-xs font-bold ${
-                      item.change.dir === 'up'
-                        ? 'text-red-500'
-                        : item.change.dir === 'down'
-                          ? 'text-emerald-600'
-                          : 'text-gray-500'
-                    }`}
-                  >
-                    {item.change.dir === 'up' && '▲ '}
-                    {item.change.dir === 'down' && '▼ '}
-                    {Math.abs(item.change.pct)}%
-                  </span>
+                  <Link href={`/products/${item.id}`}>
+                    <span className="text-sm sm:text-base">{item.image}</span>
+                    <span className="text-gray-800">{item.nameBn}</span>
+                    <span className="text-gray-700">
+                      ৳{item.today} টাকা/
+                      {unitMap[item.unit?.toLowerCase()] || item.unit}
+                    </span>
+                    <span
+                      className={`flex items-center text-[10px] sm:text-xs font-bold ${
+                        item.change.dir === 'up'
+                          ? 'text-red-500'
+                          : item.change.dir === 'down'
+                            ? 'text-emerald-600'
+                            : 'text-gray-500'
+                      }`}
+                    >
+                      {item.change.dir === 'up' && '▲ '}
+                      {item.change.dir === 'down' && '▼ '}
+                      {Math.abs(item.change.pct)}%
+                    </span>
+                  </Link>
                 </div>
               ))}
             </div>

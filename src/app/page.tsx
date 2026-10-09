@@ -53,7 +53,7 @@ const HomePage = async () => {
           ))}
         </div>
       </section>
-
+{/* all porduct */}
       <section>
         <h2 className="text-xl font-bold text-emerald-600 mb-4 flex items-center gap-2">
           বাজারের সব পণ্য ({data.length})
