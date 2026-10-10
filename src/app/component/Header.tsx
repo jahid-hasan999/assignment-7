@@ -1,5 +1,7 @@
 import { Button } from '@heroui/react';
+
 import Image from 'next/image';
+import Link from 'next/link';
 
 
 const Header = () => {
@@ -25,8 +27,13 @@ const Header = () => {
           </div>
         </div>
         <div className="flex items-center gap-2 ">
+          <Link href="/sign-in">
           <Button className=" border rounded-2xl p-1.5 ">সাইন ইন</Button>
+          </Link>
+
+          <Link href="/sign-up">
           <Button className="  rounded-2xl p-1.5 bg-green-700">সাইন আপ</Button>
+          </Link>
         </div>
       </div>
     </div>
