@@ -53,16 +53,20 @@ const SignInPage = () => {
     }
   };
 
-  const handleSocialLogin = async (provider: 'google' | 'github') => {
-    try {
-      await signIn.social({
-        provider: provider,
-        callbackURL: '/', 
-      });
-    } catch (err) {
-      toast.error('সোশ্যাল লগইন করতে সমস্যা হয়েছে!');
+const handleSocialLogin = async (provider: 'google' | 'github') => {
+  try {
+    const result = await signIn.social({
+      provider,
+      callbackURL: '/',
+    });
+
+    if (result.error) {
+      toast.error(result.error.message || 'লগইন ব্যর্থ হয়েছে!');
     }
-  };
+  } catch {
+    toast.error('সার্ভারে সমস্যা হয়েছে! আবার চেষ্টা করো।');
+  }
+};
 
   return (
     <div className="min-h-[85vh] flex items-center justify-center px-4 py-8 bg-gray-50/50">

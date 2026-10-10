@@ -1,6 +1,7 @@
-import NavItemPage from '@/app/component/NavItem';
-import Link from 'next/link';
 
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import CategoryProductList from '@/app/component/CategoryProductList';
 interface Product {
   category: string;
   id: number;
@@ -35,6 +36,9 @@ const CategoryPage = async ({
   const filteredProducts = data.filter(
     item => item.category.toLowerCase() === categoryId.toLowerCase(),
   );
+  if (filteredProducts.length === 0) {
+    notFound();
+  }
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl space-y-6">
@@ -57,11 +61,7 @@ const CategoryPage = async ({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {filteredProducts.map(pro => (
-          <NavItemPage key={pro.id} productItem={pro} />
-        ))}
-      </div>
+      <CategoryProductList products={filteredProducts} />
     </div>
   );
 };

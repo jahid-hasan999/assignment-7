@@ -29,9 +29,9 @@ const UpPriceDownCard = ({ product }: { product: Product }) => {
           <span
             className={`flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-full ${
               product.change.dir === 'up'
-                ? 'bg-red-50 text-red-600 border border-red-100'
+                ? 'bg-emerald-50 text-emerald-600 border border-emerald-100'
                 : product.change.dir === 'down'
-                  ? 'bg-emerald-50 text-emerald-600 border border-emerald-100'
+                  ? 'bg-red-50 text-red-600 border border-red-100'
                   : 'bg-gray-100 text-gray-600'
             }`}
           >
@@ -45,7 +45,8 @@ const UpPriceDownCard = ({ product }: { product: Product }) => {
           {product.nameBn}
         </h3>
         <p className="text-gray-600 text-sm font-medium">
-          ৳{product.today} টাকা /{' '}
+          <span className="block text-xs text-gray-500 mb-1">আজকের দাম</span>৳
+          {product.today} টাকা /{' '}
           {unitMap[product.unit?.toLowerCase()] || product.unit}
         </p>
       </div>

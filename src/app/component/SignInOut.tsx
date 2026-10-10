@@ -1,8 +1,10 @@
+
 'use client';
 
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
 import { authClient } from '../lib/auth-client';
 
 const SignInOut = () => {
@@ -19,13 +21,13 @@ const SignInOut = () => {
     return (
       <div className="flex items-center gap-3">
         <Link href="/sign-in" className="text-sm font-medium">
-          Sign In
+          সাইন আপ
         </Link>
         <Link
           href="/sign-up"
           className="rounded-lg bg-green-700 px-4 py-2 text-sm text-white"
         >
-          Sign Up
+          সাইন আপ
         </Link>
       </div>
     );
@@ -74,8 +76,19 @@ const SignInOut = () => {
           <button
             type="button"
             onClick={async () => {
-              await authClient.signOut();
-              setOpen(false);
+              try {
+                const result = await authClient.signOut();
+
+                if (result.error) {
+                  toast.error(result.error.message || 'Logout failed!');
+                  return;
+                }
+
+                toast.success('Logout successful!');
+                setOpen(false);
+              } catch {
+                toast.error('Logout failed!');
+              }
             }}
             className="w-full rounded-lg px-3 py-2 text-left text-sm text-red-600 hover:bg-red-50"
           >
@@ -88,3 +101,4 @@ const SignInOut = () => {
 };
 
 export default SignInOut;
+

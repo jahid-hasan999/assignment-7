@@ -23,8 +23,17 @@ const HomePage = async () => {
   );
   const data: Product[] = await res.json();
 
-  const upProducts = data.filter(item => item.change.dir === 'up');
-  const downProducts = data.filter(item => item.change.dir === 'down');
+ 
+const upProducts = data
+  .filter(item => item.change.dir === 'up')
+  .sort((a, b) => b.change.pct - a.change.pct)
+  .slice(0, 6);
+
+const downProducts = data
+  .filter(item => item.change.dir === 'down')
+  .sort((a, b) => a.change.pct - b.change.pct)
+  .slice(0, 6);
+
 
   return (
     <div className="container mx-auto px-4 py-6 space-y-8">
@@ -53,8 +62,8 @@ const HomePage = async () => {
           ))}
         </div>
       </section>
-{/* all porduct */}
-      <section>
+      {/* all porduct */}
+      <section id="সব-পণ্য">
         <h2 className="text-xl font-bold text-emerald-600 mb-4 flex items-center gap-2">
           বাজারের সব পণ্য ({data.length})
         </h2>
