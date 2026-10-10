@@ -5,6 +5,7 @@ import Header from "./component/Header";
 import Navbar from "./component/Navbar";
 import Marquee from "./component/Marquee";
 import { ToastContainer } from "react-toastify";
+import Footer from "./component/Footer";
 
 const NotoSerifBengali = Noto_Serif_Bengali({
   subsets: ['latin', 'bengali'],
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ToastContainer />
         <Marquee />
         {children}
+        <Footer/>
       </body>
     </html>
   );

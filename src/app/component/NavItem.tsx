@@ -4,7 +4,7 @@ interface Product {
   id: number;
   nameBn: string;
   image: string;
-  today: number;
+  today: number | string;
   unit: string;
   change: {
     dir: 'up' | 'down' | 'flat';
@@ -24,7 +24,7 @@ const NavItemPage = ({ productItem }: { productItem: Product }) => {
   return (
     <div>
       <Link href={`/category/${productItem.id}`}>
-        <div className="p-4 border border-gray-200/70 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+        <div className="p-4 border border-gray-200/70 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow ">
           <div className="flex items-center justify-between mb-3">
             <span className="text-3xl">{productItem.image}</span>
             <span
