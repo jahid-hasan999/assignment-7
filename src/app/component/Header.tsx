@@ -2,6 +2,7 @@ import { Button } from '@heroui/react';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import SignInOut from './SignInOut';
 
 
 const Header = () => {
@@ -26,14 +27,8 @@ const Header = () => {
             <p className="mt-1 text-xs text-neutral-600 sm:text-sm">{date}</p>
           </div>
         </div>
-        <div className="flex items-center gap-2 ">
-          <Link href="/sign-in">
-          <Button className=" border rounded-2xl p-1.5 ">সাইন ইন</Button>
-          </Link>
-
-          <Link href="/sign-up">
-          <Button className="  rounded-2xl p-1.5 bg-green-700">সাইন আপ</Button>
-          </Link>
+        <div className="flex items-center gap-3 ">
+          <SignInOut/>
         </div>
       </div>
     </div>
