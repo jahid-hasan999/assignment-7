@@ -16,11 +16,16 @@ interface Product {
 
 const HomePage = async () => {
   const res = await fetch(
-    'https://api.abcz.workers.dev/api/bazardor/products',
+    'https://api.api-store.workers.dev/api/bazardor/products',
     {
       next: { revalidate: 60 },
     },
   );
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch products: ${res.status}`);
+  }
+
   const data: Product[] = await res.json();
 
  
