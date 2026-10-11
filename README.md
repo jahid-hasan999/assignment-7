@@ -50,4 +50,4 @@ BazarDor makes it easier for users to browse products, explore categories, compa
 - Update your name through the profile update feature.
 - Access profile-related functionality after signing in.
 
-⭐ If you find this project useful, feel free to explore the repository and share your feedback.
+
